@@ -70,7 +70,6 @@ fetchIndustryBtn.addEventListener("click", async () => {
         const res = await fetch(INDUSTRY_CSV_URL);
         const text = await res.text();
 
-        console.log("[CSV RAW TEXT]", text);
         const data = parseCSV(text);        
 
         industrySelect.innerHTML = '<option value="">-- Select Industry --</option>';
@@ -149,8 +148,6 @@ uploadCompaniesBtn.addEventListener("click", async () => {
     if (!currentCompanies.length) return alert("No companies loaded");
 
     const payload = JSON.stringify({ value: currentCompanies });
-
-    console.log(currentCompanies);
     
     const reqBody = {
         output_type: "chat",
