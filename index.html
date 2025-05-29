@@ -10,7 +10,9 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-robot"></i> AI in Action</h1>
+            <div class="logo-container">
+                <img src="https://airsa.s3.us-east-1.amazonaws.com/gyan_logo.png" alt="AI IN ACTION" class="logo">
+            </div>
             <p>Industry and Company Explorer</p>
         </header>
 
@@ -37,13 +39,43 @@
         </div>
 
         <div id="companyContainer" class="card hidden">
-            <h2>Step 2: Companies for Selected Industry</h2>
+            <h2>Step 2: Select Companies for Analysis</h2>
+            <p>Choose companies to generate AIRSA reports</p>
             <div id="companyList" class="company-grid"></div>
-            <button id="uploadCompaniesBtn" class="btn secondary">
-                <span>Upload to Database</span>
-                <div id="uploadLoading" class="loader hidden"></div>
+            <button id="generateReportBtn" class="btn secondary hidden">
+                <span>Generate AIRSA Report</span>
+                <div id="reportLoading" class="loader hidden"></div>
             </button>
-            <div id="uploadResult" class="result-message hidden"></div>
+            <div id="selectedCount" class="selected-count hidden"></div>
+        </div>
+
+        <div id="reportContainer" class="card hidden">
+            <h2>AIRSA Report</h2>
+            <div id="reportContent"></div>
+        </div>
+
+        <div id="emailContainer" class="card hidden">
+            <h2>Send Report via Email</h2>
+            <div class="email-section">
+                <h3>Select Email Addresses</h3>
+                <div id="emailList" class="email-list"></div>
+                
+                <h3>Email Message</h3>
+                <textarea id="emailPrompt" rows="8" placeholder="Enter your email message...">Dear [Company Name] team,
+
+We have completed an AI-powered business analysis report for your company. The report includes insights on financial health, market positioning, and strategic recommendations.
+
+Would you like to schedule a call to discuss the findings?
+
+Best regards,
+AI in Action Team</textarea>
+                
+                <button id="sendEmailBtn" class="btn primary">
+                    <span>Send Email</span>
+                    <div id="emailLoading" class="loader hidden"></div>
+                </button>
+                <div id="emailResult" class="result-message hidden"></div>
+            </div>
         </div>
 
         <div id="noCompanyMessage" class="card message-card hidden">
@@ -52,7 +84,7 @@
     </div>
 
     <footer>
-        <p>© 2024 AI in Action</p>
+        <p>© 2025 AI in Action</p>
     </footer>
 
     <script src="script.js"></script>
