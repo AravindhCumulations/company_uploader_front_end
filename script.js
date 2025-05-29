@@ -245,11 +245,7 @@ generateReportBtn.addEventListener("click", async () => {
 
     const data = await response.json()
 
-    console.log(data)
-
     // generate pdf
-
-    console.log("starting pdf response")
 
     const payloadPdf = JSON.stringify({ value: selectedCompanyData[0] })
 
@@ -266,12 +262,9 @@ generateReportBtn.addEventListener("click", async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reqBodyPdf),
     })
-    console.log(responsePdf)
 
     const dataPdf = await responsePdf.json()
-    console.log("pdf response")
 
-    console.log(dataPdf)
 
     // Parse the response - assuming the API returns the report in the expected format
     let reportData
@@ -280,7 +273,6 @@ generateReportBtn.addEventListener("click", async () => {
 
       const pdfNestedMessage = dataPdf?.outputs?.[0]?.outputs?.[0]?.messages?.[0]?.message
 
-      console.log("pdf link ", pdfNestedMessage)
 
       if (pdfNestedMessage) {
         try {
@@ -290,7 +282,6 @@ generateReportBtn.addEventListener("click", async () => {
 
           if (match && match[0]) {
             pdfLink = match[0];
-            console.log("✅ PDF link extracted:", pdfLink);
             // You can now use pdfLink here (e.g., set state, open link, etc.)
           } else {
             console.warn("⚠️ No valid PDF link found in message.");
@@ -308,7 +299,6 @@ generateReportBtn.addEventListener("click", async () => {
       throw new Error("Invalid report format received from API")
     }
 
-    console.log("report data ", reportData)
 
     currentReport = reportData
     renderReport(reportData)
